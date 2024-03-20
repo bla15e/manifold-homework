@@ -1,0 +1,19 @@
+version: '3'
+networks:
+  homework:
+    driver: bridge
+
+services:
+  redis:
+    image: redis
+    networks:
+      - homework
+  homework-server:
+    build: .
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - homework
+    ports:
+      - "4000:80"  

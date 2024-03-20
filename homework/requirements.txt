@@ -1,0 +1,6 @@
+# Simple Web Server Component
+fastapi==0.103.2
+uvicorn
+gunicorn
+# Redis-Based Rate Limiter Component
+redis
