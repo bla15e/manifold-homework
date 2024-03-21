@@ -8,8 +8,7 @@ set -o pipefail
 cd "$(dirname "$0")"
 
 main() {
-    cd "../"
-    minikube start --driver docker --static-ip 192.168.200.200
+    docker run -p 5000:5000 registry:2
 }
 
 main "$@"

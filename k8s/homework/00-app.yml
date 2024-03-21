@@ -1,28 +1,51 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: homework-server
+  name:  homework-deployment
   labels:
-    app: homework-server
+    app:  homework-server
 
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app:  homework-server
+  template:
+    metadata:
+      labels:
+        app:  homework-server
+        
+    spec:
+      containers:
+        - name: homework-server
+          image: localhost:5000/homework-server:latest
+          ports:
+            - name: web
+              containerPort: 80
+          env:
+          - name: REDIS_HOST
+            value: "redis-service"
+          - name: REDIS_PORT
+            value: "6379"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: homework-server
+      app: redis
   template:
     metadata:
       labels:
-        app: homework-server
+        app: redis
     spec:
       containers:
-        - name: whoami
-          image: traefik/whoami
-          ports:
-            - name: web
-              containerPort: 80
-        - name: redis
-            image: redis
-            ports:
-              - name: redis
-                containerPort: 6379
+      - name: redis
+        image: redis:latest
+        ports:
+        - containerPort: 6379

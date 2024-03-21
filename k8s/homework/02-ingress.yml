@@ -1,16 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homework-server-ingress
+  name: homework-ingress
 
 spec:
+  tls:
+    - hosts:
+      - hw.ise.international
+      secretName: tls-homework-ingress-http
   rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: homework-server
-            port:
-              name: web
+  - host: hw.ise.international
+    http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: homework-service
+              port:
+                name: web
