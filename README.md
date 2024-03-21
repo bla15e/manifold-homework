@@ -15,8 +15,10 @@ Sliding Window Rate Limiting implemented with Redis.
 Rate is calculated for the entire application, clients are not individually throttled. 
 
 Default Parameters: 
-Max Requests in Window: 3
-Window Duration: 10 seconds
+```python
+RATE_LIMIT_MAX_REQUESTS = int(3)
+RATE_LIMIT_WINDOW_LENGTH_SECONDS = int(10)
+```
 
 ## k8s
 Kubernetes Resource definitions
