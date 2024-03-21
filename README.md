@@ -11,7 +11,7 @@ Running a compose stack locally:
 
 ```
 ### Rate Limiting
-Sliding Window Rate Limiting implemented with Redis.
+Sliding Window Rate Limiting implemented with Redis and FastAPI middleware.
 Rate is calculated for the entire application, clients are not individually throttled. 
 
 Default Parameters: 
