@@ -21,7 +21,8 @@ RATE_LIMIT_WINDOW_LENGTH_SECONDS = int(10)
 ```
 
 ## k8s
-Kubernetes Resource definitions
+Kubernetes Resource definitions.
+By default, runs 5 replicas of `homework-server`
 
 Uses a locally running docker registry with the `homework-server` image build and available.
 This is so we can deploy our container without publishing through an external registry
